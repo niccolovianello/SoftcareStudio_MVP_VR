@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
+using Utils;
 
 namespace UI
 {
@@ -9,6 +10,12 @@ namespace UI
     {
 
         [SerializeField] private CanvasGroup startingMenu;
+        
+        [SerializeField] private CanvasGroup mainMenu;
+        
+        [SerializeField] private CanvasGroup optionsMenu;
+
+        [SerializeField] private CanvasGroup helpUI;
 
         [SerializeField] private ActionBasedController leftController;
 
@@ -18,12 +25,9 @@ namespace UI
 
         [SerializeField] private Image rightControllerSprite;
         
-
         public void PlayGame()
         {
             CloseStartingMenu();
-            
-            //Opens up tutorial UI
         }
 
         public void QuitGame()
@@ -52,22 +56,23 @@ namespace UI
                 rightControllerSprite.color -= new Color(0, 0, 0, .8f);
             }
         }
+        
+        public void OpenOptionsMenu()
+        {
+            StartCoroutine(UICoroutines.SwitchUISection(mainMenu, optionsMenu));
+        }
+
+        public void BackToMainMenu()
+        {
+            StartCoroutine(UICoroutines.SwitchUISection(optionsMenu, mainMenu));
+        }
 
         private void CloseStartingMenu()
         {
-            StartCoroutine(FadeOut(startingMenu));
+            StartCoroutine(UICoroutines.SwitchUISection(startingMenu, helpUI));
         }
 
-        private IEnumerator FadeOut(CanvasGroup canvasGroup)
-        {
-            while (canvasGroup.alpha > 0)
-            {
-                canvasGroup.alpha -= 0.01f;
-                yield return new WaitForSeconds(0.01f);
-            }
-            
-            canvasGroup.gameObject.SetActive(false);
-        }
+        
 
     }
 }
