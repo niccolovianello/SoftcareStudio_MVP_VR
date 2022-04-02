@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Game;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -9,6 +11,8 @@ namespace UI
     public class UIManager : MonoBehaviour
     {
 
+        [SerializeField] private CanvasGroup background;
+        
         [SerializeField] private CanvasGroup startingMenu;
         
         [SerializeField] private CanvasGroup mainMenu;
@@ -59,17 +63,34 @@ namespace UI
         
         public void OpenOptionsMenu()
         {
-            StartCoroutine(UICoroutines.SwitchUISection(mainMenu, optionsMenu));
+            StartCoroutine(UIUtils.SwitchUISection(mainMenu, optionsMenu));
         }
 
         public void BackToMainMenu()
         {
-            StartCoroutine(UICoroutines.SwitchUISection(optionsMenu, mainMenu));
+            StartCoroutine(UIUtils.SwitchUISection(optionsMenu, mainMenu));
+        }
+
+        public void StartTheGame()
+        {
+            CloseHelpUi();
+            EnableGun();
         }
 
         private void CloseStartingMenu()
         {
-            StartCoroutine(UICoroutines.SwitchUISection(startingMenu, helpUI));
+            StartCoroutine(UIUtils.SwitchUISection(startingMenu, helpUI));
+        }
+
+        private void CloseHelpUi()
+        {
+            StartCoroutine(UIUtils.SwitchUISection(helpUI));
+            StartCoroutine(UIUtils.SwitchUISection(background));
+        }
+
+        private void EnableGun()
+        {
+            FindObjectOfType<GameManager>().EnableGun();
         }
 
         
