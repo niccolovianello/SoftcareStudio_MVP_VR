@@ -4,6 +4,7 @@ using Game;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
+using Utilities;
 using Utils;
 
 namespace UI
