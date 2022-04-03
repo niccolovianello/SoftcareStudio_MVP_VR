@@ -6,7 +6,6 @@ namespace Utilities
 {
     public class GameManager : MonoBehaviour
     {
-
         private Shooter _gun;
         private void Start()
         {
@@ -22,7 +21,7 @@ namespace Utilities
         public void EnableGun()
         {
             _gun.gameObject.SetActive(true);
-            FindObjectOfType<HapticController>().SendHaptics(_gun.GetComponentInParent<ActionBasedController>(), 1f, 1f);
+            FindObjectOfType<HapticController>().SendHaptics(_gun.GetComponentInParent<ActionBasedController>(), .75f, .75f);
         }
     }
 }

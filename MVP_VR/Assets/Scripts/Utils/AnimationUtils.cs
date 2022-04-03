@@ -24,7 +24,7 @@ namespace Utils
 
                 while (elapsedTime < waitTime)
                 {
-                    toBeAnimated.localScale = Vector3.Lerp(currentScale, nextScaleValue, elapsedTime);
+                    toBeAnimated.localScale = Vector3.Slerp(currentScale, nextScaleValue, elapsedTime);
 
                     elapsedTime += Time.deltaTime;
 
@@ -53,7 +53,7 @@ namespace Utils
 
                 while (elapsedTime < waitTime)
                 {
-                    toBeAnimated.localPosition = Vector3.Lerp(currentPosition, nextPositionValue, elapsedTime);
+                    toBeAnimated.localPosition = Vector3.Slerp(currentPosition, nextPositionValue, elapsedTime);
 
                     elapsedTime += Time.deltaTime;
 
