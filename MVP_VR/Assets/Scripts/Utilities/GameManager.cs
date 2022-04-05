@@ -18,10 +18,12 @@ namespace Utilities
             _gun.gameObject.SetActive(false);
         }
 
-        public void EnableGun()
+        public void StartTheGame()
         {
             _gun.gameObject.SetActive(true);
-            FindObjectOfType<HapticController>().SendHaptics(_gun.GetComponentInParent<ActionBasedController>(), .75f, .75f);
+            HapticController.SendHaptics(_gun.GetComponentInParent<ActionBasedController>(), .75f, .75f);
+            
+            FindObjectOfType<AsteroidFactory>().StartGeneration();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Utilities
 {
     public class HapticController : MonoBehaviour
     {
-        public void SendHaptics(ActionBasedController controller, float amplitude = 0.3f, float duration = 0.5f)
+        public static void SendHaptics(ActionBasedController controller, float amplitude = 0.3f, float duration = 0.5f)
         {
             controller.SendHapticImpulse(amplitude, duration);
         }

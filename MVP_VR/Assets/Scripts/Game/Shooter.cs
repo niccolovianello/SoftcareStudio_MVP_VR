@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,7 +31,7 @@ namespace Game
 
         private void Shoot()
         {
-            Bullet bul = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+            var bul = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
             bul.SetBullet(bulletSo);
             
             bul.Shoot(bulletSo.force);

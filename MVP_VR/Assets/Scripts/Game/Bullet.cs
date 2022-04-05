@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 
 namespace Game
-{
-    
-    [RequireComponent(typeof(SphereCollider))]
-    [RequireComponent(typeof(Rigidbody))]
+{ 
     public class Bullet : MonoBehaviour
     {
+        
         private BulletScriptableObject _bullet;
 
         private SphereCollider _collider;
         
         private Rigidbody _rigidbody;
+        
         public void SetBullet(BulletScriptableObject bulletSo) => _bullet = bulletSo;
 
         private void Start()
@@ -22,12 +21,12 @@ namespace Game
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Meteor"))
+            if (other.gameObject.CompareTag("Asteroid"))
             {
-                
+                other.GetComponent<Asteroid>().Die();
             }
             
-            //Destroy(gameObject);
+            Destroy(gameObject);
         
         }
         
@@ -39,6 +38,7 @@ namespace Game
         
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+            
         
         
             _rigidbody.AddForce(transform.forward * force);

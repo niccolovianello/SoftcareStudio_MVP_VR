@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using Game;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -75,7 +72,7 @@ namespace UI
         public void StartTheGame()
         {
             CloseHelpUi();
-            EnableGun();
+            LetTheGamesBegin();
         }
 
         private void CloseStartingMenu()
@@ -89,9 +86,9 @@ namespace UI
             StartCoroutine(UIUtils.SwitchUISection(background));
         }
 
-        private void EnableGun()
+        private static void LetTheGamesBegin()
         {
-            FindObjectOfType<GameManager>().EnableGun();
+            FindObjectOfType<GameManager>().StartTheGame();
         }
 
         

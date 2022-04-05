@@ -45,15 +45,45 @@ namespace Utils
                 
                 var currentPosition = toBeAnimated.localPosition;
                 
-                var nextPositionValueX = currentPosition.x * Random.Range(minShift, maxShift);
-                var nextPositionValueY = currentPosition.y * Random.Range(minShift, maxShift);
-                var nextPositionValueZ = currentPosition.z * Random.Range(minShift, maxShift);
+                var nextPositionValueX = currentPosition.x + Random.Range(minShift, maxShift);
+                var nextPositionValueY = currentPosition.y + Random.Range(minShift, maxShift);
+                var nextPositionValueZ = currentPosition.z + Random.Range(minShift, maxShift);
 
                 var nextPositionValue = new Vector3(nextPositionValueX, nextPositionValueY, nextPositionValueZ);
 
                 while (elapsedTime < waitTime)
                 {
                     toBeAnimated.localPosition = Vector3.Slerp(currentPosition, nextPositionValue, elapsedTime);
+
+                    elapsedTime += Time.deltaTime;
+
+                    yield return null;
+                }
+
+                yield return null;
+            }
+        }
+        
+        public static IEnumerator RandomRotator(Transform toBeAnimated, float minRotation, float maxRotation, float speedMultiplier)
+        {
+            while (true)
+            {
+                var waitTime = Random.Range(0.7f, 1.3f) / speedMultiplier;
+                var elapsedTime = Time.deltaTime;
+                
+                var currentRotation = toBeAnimated.localRotation;
+                
+                var nextRotationValueX = currentRotation.x + Random.Range(minRotation, maxRotation);
+                var nextRotationValueY = currentRotation.y + Random.Range(minRotation, maxRotation);
+                var nextRotationValueZ = currentRotation.z + Random.Range(minRotation, maxRotation);
+
+                var nextRotationValue = new Vector3(nextRotationValueX, nextRotationValueY, nextRotationValueZ);
+
+                var nextRotation = Quaternion.Euler(nextRotationValue);
+
+                while (elapsedTime < waitTime)
+                {
+                    toBeAnimated.localRotation = Quaternion.Slerp(currentRotation, nextRotation, elapsedTime);
 
                     elapsedTime += Time.deltaTime;
 
