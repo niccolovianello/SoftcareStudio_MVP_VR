@@ -22,6 +22,20 @@ namespace Utils
 
                 var nextScaleValue = new Vector3(nextScaleValueX, nextScaleValueY, nextScaleValueZ);
 
+                if (nextScaleValue.magnitude < minScale)
+                {
+                    nextScaleValue.x = minScale;
+                    nextScaleValue.y = minScale;
+                    nextScaleValue.z = minScale;
+                }
+                
+                if (nextScaleValue.magnitude > maxScale)
+                {
+                    nextScaleValue.x = maxScale;
+                    nextScaleValue.y = maxScale;
+                    nextScaleValue.z = maxScale;
+                }
+
                 while (elapsedTime < waitTime)
                 {
                     toBeAnimated.localScale = Vector3.Slerp(currentScale, nextScaleValue, elapsedTime);

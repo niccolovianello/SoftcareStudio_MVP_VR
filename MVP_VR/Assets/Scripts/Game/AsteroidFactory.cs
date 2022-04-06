@@ -8,22 +8,19 @@ namespace Game
     {
         [SerializeField] private Asteroid asteroid;
 
-        [SerializeField] private float maxAzimuthAngle = 120f;
-        
-        [SerializeField] private float maxZenithAngle;
+        [SerializeField] private float maxAzimuthAngle = 120f, timeBetweenAsteroids = 10f, maxZenithAngle;
 
-        [SerializeField] private float distance = 500f;
+        [SerializeField] private Transform baseSpawnPoint;
 
-        [SerializeField] private float baseHeight = 200f;
+        private float _maxWidth, _maxHeight, _difficultyValue;
 
-        [SerializeField] private float timeBetweenAsteroids = 10f;
-
-        private float _maxWidth;
-
-        private float _maxHeight;
+        private Vector3 _spawnPosition;
 
         private void Start()
         {
+            _spawnPosition = baseSpawnPoint.position;
+            var distance = _spawnPosition.z;
+
             var azimuthRad = maxAzimuthAngle * Mathf.Deg2Rad;
             _maxWidth = distance * Mathf.Tan(azimuthRad);
 
@@ -40,8 +37,16 @@ namespace Game
         {
             while (true)
             {
+                var time = 10f;
+                
+                if (_difficultyValue != 0)
+                    time = timeBetweenAsteroids / _difficultyValue;
+                
+                Debug.Log("TIME: " + time);
+                Debug.Log("DIFFICULTY VALUE: " + _difficultyValue);
+                yield return new WaitForSeconds(time);
+                
                 Instantiate(asteroid, GenerateSpawnPoint(), Quaternion.identity);
-                yield return new WaitForSeconds(timeBetweenAsteroids);
             }
 
         }
@@ -49,12 +54,17 @@ namespace Game
         private Vector3 GenerateSpawnPoint()
         {
             var x = Random.Range(-_maxWidth, _maxWidth);
-            var y = baseHeight + Random.Range(-_maxHeight, _maxHeight);
-            var z = distance;
+            var y = _spawnPosition.y + Random.Range(-_maxHeight, _maxHeight);
+            var z = _spawnPosition.z;
             
             var t = new Vector3(x, y, z);
 
             return t;
+        }
+
+        public void DifficultyValue(float d)
+        {
+            _difficultyValue = d;
         }
     }
 }

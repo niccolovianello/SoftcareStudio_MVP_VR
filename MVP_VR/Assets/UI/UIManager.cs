@@ -8,7 +8,7 @@ namespace UI
 {
     public class UIManager : MonoBehaviour
     {
-
+        
         [SerializeField] private CanvasGroup background;
         
         [SerializeField] private CanvasGroup startingMenu;
@@ -27,6 +27,7 @@ namespace UI
 
         [SerializeField] private Image rightControllerSprite;
         
+
         public void PlayGame()
         {
             CloseStartingMenu();

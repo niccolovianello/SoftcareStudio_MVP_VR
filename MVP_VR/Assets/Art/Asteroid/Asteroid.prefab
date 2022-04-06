@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5193054963523064958}
   - component: {fileID: 2900047990775875888}
   - component: {fileID: 8533884372963026315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ TrailRenderer:
   m_Time: 2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 5
+    widthMultiplier: 2.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6607467429428376894}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Scaler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 4330734334257089796}
   - component: {fileID: 3422865029578926852}
   - component: {fileID: 620609463553635966}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: vfx_asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,9 +339,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1641566763282805462}
   - component: {fileID: 2155333625894505120}
-  - component: {fileID: 2187069799468105898}
   - component: {fileID: 4749460972292384906}
-  m_Layer: 0
+  - component: {fileID: 6863867810453362222}
+  m_Layer: 6
   m_Name: Asteroid
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -377,7 +377,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2187069799468105898
+--- !u!114 &4749460972292384906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671359549896975751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e07f4f30e1409b8335c6a907295477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &6863867810453362222
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,15 +405,3 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &4749460972292384906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6671359549896975751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44e07f4f30e1409b8335c6a907295477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

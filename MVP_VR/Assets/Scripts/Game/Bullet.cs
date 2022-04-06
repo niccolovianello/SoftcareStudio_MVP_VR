@@ -37,10 +37,9 @@ namespace Game
             _collider.radius = _bullet.radius;
         
             _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody.useGravity = false;
             _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-            
-        
-        
+
             _rigidbody.AddForce(transform.forward * force);
         }
     }

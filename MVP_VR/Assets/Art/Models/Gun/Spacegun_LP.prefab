@@ -135,3 +135,4 @@ MonoBehaviour:
   shootPoint: {fileID: 4903781861737118286}
   shootActionReference: {fileID: 0}
   bullet: {fileID: 0}
+  bulletSo: {fileID: 0}
