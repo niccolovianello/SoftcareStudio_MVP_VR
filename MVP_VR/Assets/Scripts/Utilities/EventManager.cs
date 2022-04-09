@@ -6,11 +6,18 @@ namespace Utilities
     public class EventManager : MonoBehaviour
     {
         public delegate void Explode();
-        public static event Explode Explosion;
+        public static event Explode ShotExplosion;
 
-        public static void OnExplosion()
+        public static event Explode GroundExplosion;
+
+        public static void OnShotExplosion()
         {
-            Explosion?.Invoke();
+            ShotExplosion?.Invoke();
+        }
+
+        public static void OnGroundExplosion()
+        {
+            GroundExplosion?.Invoke();
         }
     }
 }

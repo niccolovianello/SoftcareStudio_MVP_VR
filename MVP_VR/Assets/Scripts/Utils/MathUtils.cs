@@ -6,7 +6,7 @@ namespace Utils
     {
         public static Vector3 Parabola(Vector3 start, Vector3 end, float widthFactor, float time)
         {
-            float Func(float x) => widthFactor * x * x;
+            float Func(float x) => -4 * widthFactor * x * x + 4 * widthFactor * x;
 
             var midPoint = Vector3.Lerp(start, end, time);
 
