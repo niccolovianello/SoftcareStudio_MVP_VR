@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using Utilities;
 using Utils;
 
-namespace UI
+namespace Art.UI
 {
     public class UIManager : MonoBehaviour
     {

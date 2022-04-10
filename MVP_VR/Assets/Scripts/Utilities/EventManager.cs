@@ -1,15 +1,22 @@
-using System.Collections;
 using UnityEngine;
 
 namespace Utilities
 {
     public class EventManager : MonoBehaviour
     {
-        public delegate void Explode();
-        public static event Explode ShotExplosion;
+        public delegate void Explosion();
+        
+        public static event Explosion ShotExplosion;
 
-        public static event Explode GroundExplosion;
+        public static event Explosion GroundExplosion;
+        
+        public delegate void StartStopGame();
 
+        public static event StartStopGame StartGame;
+        
+        public static event StartStopGame StopGame;
+
+        // SCORE UPDATES
         public static void OnShotExplosion()
         {
             ShotExplosion?.Invoke();
@@ -18,6 +25,16 @@ namespace Utilities
         public static void OnGroundExplosion()
         {
             GroundExplosion?.Invoke();
+        }
+
+        public static void OnStartGame()
+        {
+            StartGame?.Invoke();
+        }
+        
+        public static void OnStopGame()
+        {
+            StopGame?.Invoke();
         }
     }
 }

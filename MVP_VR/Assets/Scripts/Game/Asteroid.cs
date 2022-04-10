@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using Art.UI;
+using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using Utilities;
 using Utils;
@@ -11,7 +13,7 @@ namespace Game
     {
         [SerializeField] private float speedMultiplier;
 
-        [SerializeField] private GameObject terrainCollisionVFX, shotCollisionVFX;
+        [SerializeField] private GameObject terrainCollisionVFX, shotCollisionVFX, successText, missText;
 
         [SerializeField] private List<GameObject> trails;
 
@@ -24,7 +26,6 @@ namespace Game
             _target = GameObject.Find("GameLogic/AsteroidTarget").transform;
             _startPos = transform;
             _widthFactor = Random.Range(.2f, 2f);
-
         }
 
         private void Update()
@@ -51,6 +52,26 @@ namespace Game
             {
                 var vfx = Instantiate(shotCollisionVFX, pos, Quaternion.identity);
                 Destroy(vfx, 5);
+
+                foreach (var notification in FindObjectsOfType<InGameNotification>())
+                {
+                    Destroy(notification.gameObject);
+                }
+
+                var text = Instantiate(successText, pos, quaternion.identity);
+                
+                var random = Random.Range(1, 5);
+                text.GetComponentInChildren<TMP_Text>().text = random switch
+                {
+                    1 => "GRANDE!",
+                    2 => "DAJE!",
+                    3 => "SUPER!",
+                    4 => "FORZA!",
+                    5 => "TOP!",
+                    _ => text.GetComponentInChildren<TMP_Text>().text
+                };
+                
+                Destroy(text, 2);
             }
 
             if (trails.Count > 0)
@@ -82,6 +103,26 @@ namespace Game
             {
                 var vfx = Instantiate(terrainCollisionVFX, pos, Quaternion.identity);
                 Destroy(vfx, 5);
+                
+                foreach (var notification in FindObjectsOfType<InGameNotification>())
+                {
+                    Destroy(notification.gameObject);
+                }
+                
+                var text = Instantiate(missText, pos + new Vector3(0, 5, 0), quaternion.identity);
+                
+                var random = Random.Range(1, 5);
+                text.GetComponentInChildren<TMP_Text>().text = random switch
+                {
+                    1 => "PECCATO...",
+                    2 => "MANCATO!",
+                    3 => "CONCENTRATI!",
+                    4 => "OH NO!",
+                    5 => "AZZ...",
+                    _ => text.GetComponentInChildren<TMP_Text>().text
+                };
+                
+                Destroy(text, 2);
             }
 
             if (trails.Count > 0)

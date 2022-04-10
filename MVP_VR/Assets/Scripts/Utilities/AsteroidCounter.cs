@@ -27,8 +27,6 @@ namespace Utilities
             
             var newStrengthIndex = DynamicDifficultyAdjuster.StrengthIndexCalculator(_previousShotsList);
             FindObjectOfType<AsteroidFactory>().DifficultyValue(newStrengthIndex);
-                                                                 
-            Debug.Log("STRENGTH INDEX: " + newStrengthIndex + "\n" + string.Join(", ", _previousShotsList));
         }
     }
 }

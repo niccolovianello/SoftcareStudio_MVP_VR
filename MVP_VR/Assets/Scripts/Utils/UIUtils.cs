@@ -10,7 +10,7 @@ namespace Utils
             while (canvasGroupToClose.alpha > 0)
             {
                 canvasGroupToClose.alpha -= 0.02f;
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.005f);
             }
             
             canvasGroupToClose.gameObject.SetActive(false);
@@ -21,7 +21,7 @@ namespace Utils
             while (canvasGroupToOpen.alpha < 1)
             {
                 canvasGroupToOpen.alpha += 0.02f;
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.005f);
             }
 
         }

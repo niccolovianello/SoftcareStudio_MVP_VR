@@ -4925,6 +4925,8 @@ MonoBehaviour:
   speedMultiplier: 0.002
   terrainCollisionVFX: {fileID: 2970087508806980527, guid: ba9640ba873803a449099b3a33d734d0, type: 3}
   shotCollisionVFX: {fileID: 2970087508806980527, guid: 3e0e7cfab6916cc45850a9efa80d3a96, type: 3}
+  successText: {fileID: 8130377276925066201, guid: 0890ccfeee439204587b45174446b0c6, type: 3}
+  missText: {fileID: 8130377276925066201, guid: cc6a8d285a31afe488dc6e4f81bb6c5d, type: 3}
   trails:
   - {fileID: 4814299679918920691}
 --- !u!114 &4590030583874818383

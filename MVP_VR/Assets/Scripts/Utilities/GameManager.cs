@@ -23,7 +23,7 @@ namespace Utilities
             _gun.gameObject.SetActive(true);
             HapticController.SendHaptics(_gun.GetComponentInParent<ActionBasedController>(), .75f, .75f);
             
-            FindObjectOfType<AsteroidFactory>().StartGeneration();
+            EventManager.OnStartGame();
         }
     }
 }

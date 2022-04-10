@@ -108,5 +108,21 @@ namespace Utils
             }
         }
 
+        public static IEnumerator SpawnUIElement(GameObject element, Vector3 targetScale, float speedMultiplier)
+        {
+            var scale = element.transform.localScale;
+
+            var elapsedTime = Time.deltaTime;
+
+            while (elapsedTime < 1f)
+            {
+                scale = Vector3.Slerp(scale, targetScale, elapsedTime);
+                element.transform.localScale = scale;
+                elapsedTime += Time.deltaTime * speedMultiplier;
+
+                yield return null;
+            }
+        }
+
     }
 }

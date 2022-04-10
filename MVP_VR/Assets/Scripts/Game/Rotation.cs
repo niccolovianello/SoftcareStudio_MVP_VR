@@ -5,12 +5,27 @@ namespace Game
     public class Rotation : MonoBehaviour
     {
 
-        [SerializeField] private float rotationSpeed;
+        private float _rotationSpeed;
+
+        private void Start()
+        {
+            _rotationSpeed = Random.Range(150, 300);
+
+            var rand = Random.Range(0, 1);
+            switch (rand)
+            {
+                case 0:
+                    _rotationSpeed *= -1;
+                    break;
+                case 1:
+                    break;
+            }
+        }
 
         // Update is called once per frame
         private void Update()
         {
-            transform.Rotate(rotationSpeed * Time.deltaTime, rotationSpeed * Time.deltaTime, rotationSpeed * Time.deltaTime, Space.Self);
+            transform.Rotate(_rotationSpeed * Time.deltaTime, _rotationSpeed * Time.deltaTime, _rotationSpeed * Time.deltaTime, Space.Self);
         }
     }
 }

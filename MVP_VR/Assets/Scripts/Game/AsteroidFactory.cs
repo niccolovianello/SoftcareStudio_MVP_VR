@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Utilities;
 
 namespace Game
 {
@@ -16,6 +16,16 @@ namespace Game
 
         private Vector3 _spawnPosition;
 
+        private void OnEnable()
+        {
+            EventManager.StartGame += StartGeneration;
+        }
+        
+        private void OnDisable()
+        {
+            EventManager.StartGame -= StartGeneration;
+        }
+
         private void Start()
         {
             _spawnPosition = baseSpawnPoint.position;
@@ -28,7 +38,7 @@ namespace Game
             _maxHeight = distance * Mathf.Tan(zenithRad);
         }
 
-        public void StartGeneration()
+        private void StartGeneration()
         {
             StartCoroutine(AsteroidGenerator());
         }
@@ -41,12 +51,9 @@ namespace Game
                 
                 if (_difficultyValue != 0)
                     time = timeBetweenAsteroids / _difficultyValue;
-                
-                Debug.Log("TIME: " + time);
-                Debug.Log("DIFFICULTY VALUE: " + _difficultyValue);
-                yield return new WaitForSeconds(time);
-                
+
                 Instantiate(asteroid, GenerateSpawnPoint(), Quaternion.identity);
+                yield return new WaitForSeconds(time);
             }
 
         }
