@@ -15,6 +15,10 @@ namespace Utilities
         public static event StartStopGame StartGame;
         
         public static event StartStopGame StopGame;
+        
+        public delegate void Combo();
+
+        public static event Combo SuperCombo;
 
         // SCORE UPDATES
         public static void OnShotExplosion()
@@ -35,6 +39,11 @@ namespace Utilities
         public static void OnStopGame()
         {
             StopGame?.Invoke();
+        }
+
+        public static void OnCombo()
+        {
+            SuperCombo?.Invoke();
         }
     }
 }

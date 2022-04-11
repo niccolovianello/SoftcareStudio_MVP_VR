@@ -88,6 +88,9 @@ namespace Game
                 }
             }
             
+            var comboChecker = FindObjectOfType<ComboChecker>();
+            comboChecker.IncreaseCounter();
+
             FindObjectOfType<AsteroidCounter>().AddStatistics(1);
             EventManager.OnShotExplosion();
             Destroy(gameObject);
@@ -138,6 +141,9 @@ namespace Game
                     Destroy(ps.gameObject, main.duration + main.startLifetime.constantMax);
                 }
             }
+            
+            var comboChecker = FindObjectOfType<ComboChecker>();
+            comboChecker.ResetCounter();
             
             FindObjectOfType<AsteroidCounter>().AddStatistics(0);
             EventManager.OnGroundExplosion();

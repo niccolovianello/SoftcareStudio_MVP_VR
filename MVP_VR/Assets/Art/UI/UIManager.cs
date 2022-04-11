@@ -9,24 +9,11 @@ namespace Art.UI
     public class UIManager : MonoBehaviour
     {
         
-        [SerializeField] private CanvasGroup background;
-        
-        [SerializeField] private CanvasGroup startingMenu;
-        
-        [SerializeField] private CanvasGroup mainMenu;
-        
-        [SerializeField] private CanvasGroup optionsMenu;
+        [SerializeField] private CanvasGroup background, startingMenu, mainMenu, optionsMenu, helpUI, gameStats;
 
-        [SerializeField] private CanvasGroup helpUI;
+        [SerializeField] private ActionBasedController leftController, rightController;
 
-        [SerializeField] private ActionBasedController leftController;
-
-        [SerializeField] private ActionBasedController rightController;
-        
-        [SerializeField] private Image leftControllerSprite;
-
-        [SerializeField] private Image rightControllerSprite;
-        
+        [SerializeField] private Image leftControllerSprite, rightControllerSprite;
 
         public void PlayGame()
         {
@@ -87,8 +74,9 @@ namespace Art.UI
             StartCoroutine(UIUtils.SwitchUISection(background));
         }
 
-        private static void LetTheGamesBegin()
+        private void LetTheGamesBegin()
         {
+            StartCoroutine(UIUtils.SwitchUISection(null, gameStats));
             FindObjectOfType<GameManager>().StartTheGame();
         }
 

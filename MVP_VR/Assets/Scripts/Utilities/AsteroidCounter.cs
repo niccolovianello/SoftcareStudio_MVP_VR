@@ -10,7 +10,7 @@ namespace Utilities
         [SerializeField] private int shotsToIncludeInPrediction;
 
         private int[] _previousShots;
-
+        
         private List<int> _previousShotsList;
 
         private void Start()
@@ -28,5 +28,6 @@ namespace Utilities
             var newStrengthIndex = DynamicDifficultyAdjuster.StrengthIndexCalculator(_previousShotsList);
             FindObjectOfType<AsteroidFactory>().DifficultyValue(newStrengthIndex);
         }
+        
     }
 }
