@@ -88,8 +88,11 @@ namespace Game
                 }
             }
             
-            var comboChecker = FindObjectOfType<ComboChecker>();
-            comboChecker.IncreaseCounter();
+            var levelChecker = FindObjectOfType<LevelChecker>();
+            levelChecker.IncreaseSuccessCounter();
+
+            var statsManager = FindObjectOfType<StatsManager>();
+            statsManager.IncreaseScore();
 
             FindObjectOfType<AsteroidCounter>().AddStatistics(1);
             EventManager.OnShotExplosion();
@@ -142,8 +145,8 @@ namespace Game
                 }
             }
             
-            var comboChecker = FindObjectOfType<ComboChecker>();
-            comboChecker.ResetCounter();
+            var levelChecker = FindObjectOfType<LevelChecker>();
+            levelChecker.IncreaseMissCounter();
             
             FindObjectOfType<AsteroidCounter>().AddStatistics(0);
             EventManager.OnGroundExplosion();

@@ -71,7 +71,7 @@ namespace Game
 
         public void DifficultyValue(float d)
         {
-            _difficultyValue = d;
+            _difficultyValue = d / 2;
         }
     }
 }

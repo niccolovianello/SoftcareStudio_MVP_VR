@@ -20,6 +20,12 @@ namespace Utilities
 
         public static event Combo SuperCombo;
 
+        public delegate void Level();
+
+        public static event Level LevelUp;
+
+        public static event Level LevelDown;
+
         // SCORE UPDATES
         public static void OnShotExplosion()
         {
@@ -44,6 +50,16 @@ namespace Utilities
         public static void OnCombo()
         {
             SuperCombo?.Invoke();
+        }
+
+        public static void OnLevelUp()
+        {
+            LevelUp?.Invoke();
+        }
+        
+        public static void OnLevelDown()
+        {
+            LevelDown?.Invoke();
         }
     }
 }

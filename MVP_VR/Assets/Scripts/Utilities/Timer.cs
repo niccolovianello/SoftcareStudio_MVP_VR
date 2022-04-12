@@ -1,10 +1,8 @@
 using System;
-using System.Globalization;
 using TMPro;
 using UnityEngine;
-using Utilities;
 
-namespace Game
+namespace Utilities
 {
     public class Timer : MonoBehaviour
     {
