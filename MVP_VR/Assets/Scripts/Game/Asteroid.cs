@@ -88,12 +88,6 @@ namespace Game
                 }
             }
             
-            var levelChecker = FindObjectOfType<LevelChecker>();
-            levelChecker.IncreaseSuccessCounter();
-
-            var statsManager = FindObjectOfType<StatsManager>();
-            statsManager.IncreaseScore();
-
             FindObjectOfType<AsteroidCounter>().AddStatistics(1);
             EventManager.OnShotExplosion();
             Destroy(gameObject);
@@ -144,10 +138,7 @@ namespace Game
                     Destroy(ps.gameObject, main.duration + main.startLifetime.constantMax);
                 }
             }
-            
-            var levelChecker = FindObjectOfType<LevelChecker>();
-            levelChecker.IncreaseMissCounter();
-            
+
             FindObjectOfType<AsteroidCounter>().AddStatistics(0);
             EventManager.OnGroundExplosion();
             Destroy(gameObject);

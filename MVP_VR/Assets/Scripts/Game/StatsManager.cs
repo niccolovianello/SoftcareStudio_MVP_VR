@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using Utilities;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -8,16 +9,20 @@ namespace Game
     {
         [SerializeField] private TMP_Text scoreText, comboText, levelText;
 
+        [SerializeField] private Image comboLoader;
+
         private int _score, _combo, _remainingCombos;
 
         private void OnEnable()
         {
-            EventManager.SuperCombo += UpdateCombo;
+            EventManager.SuperCombo += NewCombo;
+            EventManager.ShotExplosion += IncreaseScore;
         }
         
         private void OnDisable()
         {
-            EventManager.SuperCombo -= UpdateCombo;
+            EventManager.SuperCombo -= NewCombo;
+            EventManager.ShotExplosion -= IncreaseScore;
         }
 
         private void Start()
@@ -36,13 +41,19 @@ namespace Game
             levelText.text = "LIVELLO " + level;
         }
 
-        public void IncreaseScore()
+        private void IncreaseScore()
         {
             _score += 100;
             scoreText.text = $"{_score,0:D7}";
         }
 
-        private void UpdateCombo()
+        public void UpdateComboLoader(bool increase)
+        {
+            if (increase) comboLoader.fillAmount += .1f;
+            else comboLoader.fillAmount = 0;
+        }
+
+        private void NewCombo()
         {
             _remainingCombos--;
 
@@ -53,6 +64,7 @@ namespace Game
             }
             
             EventManager.OnLevelUp();
+            
             _combo++;
             _remainingCombos = _combo;
             comboText.text = _remainingCombos.ToString();

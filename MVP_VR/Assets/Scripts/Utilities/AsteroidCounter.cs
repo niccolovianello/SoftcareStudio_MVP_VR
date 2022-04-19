@@ -10,6 +10,8 @@ namespace Utilities
         [SerializeField] private int shotsToIncludeInPrediction;
 
         private int[] _previousShots;
+
+        private int _missedShots;
         
         private List<int> _previousShotsList;
 
@@ -21,6 +23,16 @@ namespace Utilities
 
         public void AddStatistics(int i)
         {
+            if (i == 0)
+            {
+                _missedShots++;
+                if (_missedShots == 10)
+                {
+                    _missedShots = 0;
+                    EventManager.OnLevelDown();
+                }
+            }
+            
             _previousShotsList.RemoveAt(0);
 
             _previousShotsList.Add(i);

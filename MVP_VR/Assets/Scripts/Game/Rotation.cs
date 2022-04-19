@@ -21,8 +21,7 @@ namespace Game
                     break;
             }
         }
-
-        // Update is called once per frame
+        
         private void Update()
         {
             transform.Rotate(_rotationSpeed * Time.deltaTime, _rotationSpeed * Time.deltaTime, _rotationSpeed * Time.deltaTime, Space.Self);

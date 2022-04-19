@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   postExposure:
     m_OverrideState: 1
     m_Value: 0.35
@@ -80,13 +80,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
   m_Name: SplitToning
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {r: 0.26099148, g: 0.36836323, b: 0.4811321, a: 1}
   highlights:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.56079274, b: 0.023584902, a: 1}
+    m_Value: {r: 1, g: 0.69927657, b: 0.1745283, a: 1}
   balance:
     m_OverrideState: 1
     m_Value: -4
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: -0.17
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb4b772797da9440885e8bd939e9560, type: 3}
   m_Name: ColorCurves
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   master:
     m_OverrideState: 1
     m_Value:
@@ -170,8 +170,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.22946176
-          value: 0.09638554
+          time: 0.20045558
+          value: 0.119617224
           inSlope: 0.5222997
           outSlope: 0.5222997
           tangentMode: 0
@@ -179,8 +179,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.7110482
-          value: 0.8373494
+          time: 0.7243736
+          value: 0.8229665
           inSlope: 1
           outSlope: 1
           tangentMode: 0
