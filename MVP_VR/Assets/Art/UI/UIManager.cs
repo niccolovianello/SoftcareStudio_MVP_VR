@@ -11,8 +11,6 @@ namespace Art.UI
         
         [SerializeField] private CanvasGroup background, startingMenu, mainMenu, optionsMenu, helpUI, gameStats;
 
-        [SerializeField] private ActionBasedController leftController, rightController;
-
         [SerializeField] private Image leftControllerSprite, rightControllerSprite;
 
         public void PlayGame()
@@ -25,23 +23,17 @@ namespace Art.UI
             Application.Quit();
         }
 
-        public void ChangeController()
+        public void ChangeControllerSprite(bool left)
         {
             
-            if (leftController.gameObject.activeSelf)
+            if (!left)
             {
-                leftController.gameObject.SetActive(false);
-                rightController.gameObject.SetActive(true);
-
                 leftControllerSprite.color -= new Color(0, 0, 0, .8f);
                 rightControllerSprite.color += new Color(0, 0, 0, .8f);
             }
 
             else
             {
-                rightController.gameObject.SetActive(false);
-                leftController.gameObject.SetActive(true);
-                
                 leftControllerSprite.color += new Color(0, 0, 0, .8f);
                 rightControllerSprite.color -= new Color(0, 0, 0, .8f);
             }
@@ -77,7 +69,10 @@ namespace Art.UI
         private void LetTheGamesBegin()
         {
             StartCoroutine(UIUtils.SwitchUISection(null, gameStats));
-            FindObjectOfType<GameManager>().StartTheGame();
+
+            var controller = FindObjectOfType<ActionBasedController>();
+            
+            FindObjectOfType<GameManager>().StartTheGame(controller);
         }
 
         

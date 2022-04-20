@@ -9,20 +9,20 @@ namespace Game
     {
         [SerializeField] private TMP_Text scoreText, comboText, levelText;
 
-        [SerializeField] private Image comboLoader;
+        [SerializeField] private Image comboLoader, missCounter;
 
-        private int _score, _combo, _remainingCombos;
+        private int _combo, _remainingCombos;
 
         private void OnEnable()
         {
             EventManager.SuperCombo += NewCombo;
-            EventManager.ShotExplosion += IncreaseScore;
+            EventManager.LevelDown += DecreaseNeededCombos;
         }
         
         private void OnDisable()
         {
             EventManager.SuperCombo -= NewCombo;
-            EventManager.ShotExplosion -= IncreaseScore;
+            EventManager.LevelDown -= DecreaseNeededCombos;
         }
 
         private void Start()
@@ -31,9 +31,6 @@ namespace Game
 
             _remainingCombos = _combo;
             comboText.text = _remainingCombos.ToString();
-
-            _score = 0;
-            scoreText.text = $"{_score,0:D7}";
         }
 
         public void UpdateLevel(int level)
@@ -41,16 +38,21 @@ namespace Game
             levelText.text = "LIVELLO " + level;
         }
 
-        private void IncreaseScore()
+        public void UpdateScore(int score)
         {
-            _score += 100;
-            scoreText.text = $"{_score,0:D7}";
+            scoreText.text = $"{score,0:D7}";
         }
 
         public void UpdateComboLoader(bool increase)
         {
             if (increase) comboLoader.fillAmount += .1f;
             else comboLoader.fillAmount = 0;
+        }
+
+        public void UpdateMissCounter(bool increase)
+        {
+            if (increase) missCounter.fillAmount += .1f;
+            else missCounter.fillAmount = 0;
         }
 
         private void NewCombo()
@@ -66,6 +68,13 @@ namespace Game
             EventManager.OnLevelUp();
             
             _combo++;
+            _remainingCombos = _combo;
+            comboText.text = _remainingCombos.ToString();
+        }
+
+        private void DecreaseNeededCombos()
+        {
+            _combo--;
             _remainingCombos = _combo;
             comboText.text = _remainingCombos.ToString();
         }

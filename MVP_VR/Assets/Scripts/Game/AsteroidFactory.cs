@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO.Enumeration;
 using UnityEngine;
 using Utilities;
 
@@ -52,7 +53,9 @@ namespace Game
                 if (_difficultyValue != 0)
                     time = timeBetweenAsteroids / _difficultyValue;
 
-                Instantiate(asteroid, GenerateSpawnPoint(), Quaternion.identity);
+                var ast = Instantiate(asteroid, GenerateSpawnPoint(), Quaternion.identity);
+                ast.SetSpeedMultiplier(0.001f * FindObjectOfType<LevelChecker>().GetLevel());
+                
                 yield return new WaitForSeconds(time);
             }
 

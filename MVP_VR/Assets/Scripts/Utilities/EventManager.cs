@@ -26,7 +26,6 @@ namespace Utilities
 
         public static event Level LevelDown;
 
-        // SCORE UPDATES
         public static void OnShotExplosion()
         {
             ShotExplosion?.Invoke();

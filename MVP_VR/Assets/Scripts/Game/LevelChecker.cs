@@ -34,6 +34,11 @@ namespace Game
             _missCounter = 0;
         }
 
+        public int GetLevel()
+        {
+            return _level;
+        }
+
         private void IncreaseSuccessCounter()
         {
             _successCounter++;
@@ -50,25 +55,29 @@ namespace Game
             if(_successCounter > 0) ResetSuccessCounter();
             
             _missCounter++;
+            FindObjectOfType<StatsManager>().UpdateMissCounter(true);
 
             if (!IsLevelDown()) return;
             
+            if (_level <= 1) return;
+            
             EventManager.OnLevelDown();
-            ResetMissCounter();
         }
 
         private void IncreaseLevel()
         {
             _level++;
             FindObjectOfType<StatsManager>().UpdateLevel(_level);
+            
+            ResetMissCounter();
         }
 
         private void DecreaseLevel()
         {
-            if (_level <= 1) return;
             _level--;
             FindObjectOfType<StatsManager>().UpdateLevel(_level);
-
+            
+            ResetMissCounter();
         }
         
         private void ResetSuccessCounter()
@@ -80,6 +89,7 @@ namespace Game
         private void ResetMissCounter()
         {
             _missCounter = 0;
+            FindObjectOfType<StatsManager>().UpdateMissCounter(false);
         }
         
         private bool IsCombo()

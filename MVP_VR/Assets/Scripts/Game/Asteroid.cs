@@ -11,7 +11,6 @@ namespace Game
 {
     public class Asteroid : MonoBehaviour
     {
-        [SerializeField] private float speedMultiplier;
 
         [SerializeField] private GameObject terrainCollisionVFX, shotCollisionVFX, successText, missText;
 
@@ -19,7 +18,7 @@ namespace Game
 
         private Transform _target, _startPos;
 
-        private float _widthFactor, _interpolator;
+        private float _widthFactor, _interpolator, _speedMultiplier;
 
         private void Start()
         {
@@ -28,11 +27,11 @@ namespace Game
             _widthFactor = Random.Range(.2f, 2f);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _interpolator += Time.deltaTime;
             
-            transform.position = MathUtils.Parabola(_startPos.position, _target.transform.position, _widthFactor, _interpolator * speedMultiplier);
+            transform.position = MathUtils.Parabola(_startPos.position, _target.transform.position, _widthFactor, _interpolator * _speedMultiplier);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -142,6 +141,11 @@ namespace Game
             FindObjectOfType<AsteroidCounter>().AddStatistics(0);
             EventManager.OnGroundExplosion();
             Destroy(gameObject);
+        }
+
+        public void SetSpeedMultiplier(float sm)
+        {
+            _speedMultiplier = sm;
         }
     }
 }
