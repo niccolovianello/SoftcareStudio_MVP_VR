@@ -40,8 +40,8 @@ Material:
     - _DissolveScale: 35
     m_Colors:
     - _Coloe01: {r: 0, g: 0.1821365, b: 1, a: 0}
-    - _Color01: {r: 1, g: 0, b: 0.07510948, a: 0}
-    - _Color02: {r: 1, g: 0.1316796, b: 0, a: 0}
+    - _Color01: {r: 0, g: 0.7764706, b: 2, a: 0}
+    - _Color02: {r: 0, g: 0.15686275, b: 0.36078432, a: 0}
     - _DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _Emission: {r: 0, g: 0.72156864, b: 4, a: 0}
     - _MainTexSpeed: {r: 0.1, g: 0, b: 0, a: 0}

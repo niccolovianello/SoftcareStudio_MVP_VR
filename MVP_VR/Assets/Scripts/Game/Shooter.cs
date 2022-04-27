@@ -31,10 +31,15 @@ namespace Game
 
         private void Shoot()
         {
+            var manaManager = FindObjectOfType<ManaManager>();
+
+            if (!manaManager.CanShoot()) return;
+            
+            manaManager.DecreaseShots();
             var bul = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
             bul.SetBullet(bulletSo);
-            
             bul.Shoot(bulletSo.force);
+
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Game
 
         private void Start()
         {
-            _target = GameObject.Find("GameLogic/AsteroidTarget").transform;
+            _target = GameObject.Find("GameLogic/Asteroid Target").transform;
             _startPos = transform;
             _widthFactor = Random.Range(.2f, 2f);
         }
