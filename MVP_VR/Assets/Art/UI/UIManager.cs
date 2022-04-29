@@ -13,6 +13,16 @@ namespace Art.UI
 
         [SerializeField] private Image leftControllerSprite, rightControllerSprite;
 
+        private void OnEnable()
+        {
+            EventManager.StopGame += DisableGameStats;
+        }
+        
+        private void OnDisable()
+        {
+            EventManager.StopGame -= DisableGameStats;
+        }
+
         public void PlayGame()
         {
             CloseStartingMenu();
@@ -73,6 +83,11 @@ namespace Art.UI
             var controller = FindObjectOfType<ActionBasedController>();
             
             FindObjectOfType<GameManager>().StartTheGame(controller);
+        }
+
+        private void DisableGameStats()
+        {
+            gameStats.gameObject.SetActive(false);
         }
 
         

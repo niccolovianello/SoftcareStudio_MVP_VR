@@ -34,5 +34,10 @@ namespace Game
             _statsManager.UpdateScore(_score);
         }
 
+        public int GetScore()
+        {
+            return _score;
+        }
+
     }
 }

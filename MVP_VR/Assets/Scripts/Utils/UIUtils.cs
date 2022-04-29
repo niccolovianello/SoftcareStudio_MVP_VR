@@ -5,8 +5,7 @@ namespace Utils
 {
     public static class UIUtils
     {
-        public static IEnumerator SwitchUISection(CanvasGroup canvasGroupToClose = null,
-            CanvasGroup canvasGroupToOpen = null)
+        public static IEnumerator SwitchUISection(CanvasGroup canvasGroupToClose = null, CanvasGroup canvasGroupToOpen = null)
         {
             if (canvasGroupToClose)
             {
@@ -21,6 +20,7 @@ namespace Utils
             }
 
             if (!canvasGroupToOpen) yield break;
+            
             canvasGroupToOpen.gameObject.SetActive(true);
 
             while (canvasGroupToOpen.alpha < 1)

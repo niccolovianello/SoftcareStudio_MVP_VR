@@ -8,8 +8,24 @@ namespace Utilities
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private ActionBasedController rightController, leftController;
+
+        [SerializeField] private CanvasGroup leaderboard;
         
         private Shooter _gunRight, _gunLeft;
+
+        private void OnEnable()
+        {
+            EventManager.StopGame += EnableLeaderboard;
+            EventManager.StopGame += DisableGun;
+
+        }
+
+        private void OnDisable()
+        {
+            EventManager.StopGame -= EnableLeaderboard;
+            EventManager.StopGame -= DisableGun;
+        }
+
         private void Start()
         {
             _gunRight = rightController.GetComponentInChildren<Shooter>();
@@ -22,6 +38,11 @@ namespace Utilities
         {
             _gunRight.gameObject.SetActive(false);
             _gunLeft.gameObject.SetActive(false);
+        }
+
+        private void EnableLeaderboard()
+        {
+            leaderboard.gameObject.SetActive(true);
         }
 
         public void ChangeController()

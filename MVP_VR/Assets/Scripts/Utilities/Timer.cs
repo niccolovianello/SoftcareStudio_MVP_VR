@@ -21,7 +21,7 @@ namespace Utilities
         
         private void OnDisable()
         {
-            EventManager.StartGame -= StopTimer;
+            EventManager.StartGame -= StartTimer;
         }
 
         private void Start()

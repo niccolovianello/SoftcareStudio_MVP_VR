@@ -5,8 +5,7 @@ namespace Game
 {
     public class LevelChecker : MonoBehaviour
     {
-        
-        private int _successCounter, _missCounter, _level;
+        private int _successCounter, _missCounter, _level, _maxLevel;
 
         private void OnEnable()
         {
@@ -28,15 +27,21 @@ namespace Game
         private void Start()
         {
             _level = 1;
+            _maxLevel = _level;
             FindObjectOfType<StatsManager>().UpdateLevel(_level);
             
             _successCounter = 0;
             _missCounter = 0;
         }
 
-        public int GetLevel()
+        public int GetCurrentLevel()
         {
             return _level;
+        }
+
+        public int GetMaxLevel()
+        {
+            return _maxLevel;
         }
 
         private void IncreaseSuccessCounter()
@@ -67,6 +72,9 @@ namespace Game
         private void IncreaseLevel()
         {
             _level++;
+
+            if (_level > _maxLevel) _maxLevel = _level;
+            
             FindObjectOfType<StatsManager>().UpdateLevel(_level);
             
             ResetMissCounter();
@@ -74,7 +82,7 @@ namespace Game
 
         private void DecreaseLevel()
         {
-            _level--;
+            if(_level > 1) _level--;
             FindObjectOfType<StatsManager>().UpdateLevel(_level);
             
             ResetMissCounter();

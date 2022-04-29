@@ -11,7 +11,7 @@ namespace Utilities
 
         private int[] _previousShots;
 
-        private int _missedShots;
+        private int _missedShots, _lostAsteroids, _killedAsteroids;
         
         private List<int> _previousShotsList;
 
@@ -19,6 +19,9 @@ namespace Utilities
         {
             _previousShots = new int[shotsToIncludeInPrediction];
             _previousShotsList = _previousShots.ToList();
+
+            _lostAsteroids = 0;
+            _killedAsteroids = 0;
         }
 
         public void AddStatistics(int i)
@@ -39,6 +42,26 @@ namespace Utilities
             
             var newStrengthIndex = DynamicDifficultyAdjuster.StrengthIndexCalculator(_previousShotsList);
             FindObjectOfType<AsteroidFactory>().DifficultyValue(newStrengthIndex);
+        }
+
+        public void IncreaseLostAsteroids()
+        {
+            _lostAsteroids++;
+        }
+
+        public void IncreaseKilledAsteroids()
+        {
+            _killedAsteroids++;
+        }
+
+        public int GetLostAsteroids()
+        {
+            return _lostAsteroids;
+        }
+
+        public int GetKilledAsteroids()
+        {
+            return _killedAsteroids;
         }
         
     }

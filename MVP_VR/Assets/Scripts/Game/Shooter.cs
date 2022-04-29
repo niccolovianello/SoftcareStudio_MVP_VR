@@ -39,7 +39,6 @@ namespace Game
             var bul = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
             bul.SetBullet(bulletSo);
             bul.Shoot(bulletSo.force);
-
         }
     }
 }

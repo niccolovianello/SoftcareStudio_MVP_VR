@@ -11,7 +11,7 @@ namespace Game
 
         [SerializeField] private Image comboLoader, missCounter;
 
-        private int _combo, _remainingCombos;
+        private int _combo, _remainingCombos, _totalCombos;
 
         private void OnEnable()
         {
@@ -28,6 +28,7 @@ namespace Game
         private void Start()
         {
             _combo = 1;
+            _totalCombos = 0;
 
             _remainingCombos = _combo;
             comboText.text = _remainingCombos.ToString();
@@ -55,8 +56,14 @@ namespace Game
             else missCounter.fillAmount = 0;
         }
 
+        public int GetTotalCombos()
+        {
+            return _totalCombos;
+        }
+
         private void NewCombo()
         {
+            _totalCombos++;
             _remainingCombos--;
 
             if (_remainingCombos != 0)

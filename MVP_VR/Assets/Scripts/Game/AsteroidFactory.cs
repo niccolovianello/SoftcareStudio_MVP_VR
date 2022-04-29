@@ -1,5 +1,4 @@
 using System.Collections;
-using System.IO.Enumeration;
 using UnityEngine;
 using Utilities;
 
@@ -17,18 +16,26 @@ namespace Game
 
         private Vector3 _spawnPosition;
 
+        private bool _generate;
+
         private void OnEnable()
         {
             EventManager.StartGame += StartGeneration;
+            EventManager.StopGame += StopGeneration;
+            EventManager.StopGame += DestroyAllAsteroids;
         }
         
         private void OnDisable()
         {
             EventManager.StartGame -= StartGeneration;
+            EventManager.StopGame -= StopGeneration;
+            EventManager.StopGame -= DestroyAllAsteroids;
         }
 
         private void Start()
         {
+            _generate = false;
+            
             _spawnPosition = baseSpawnPoint.position;
             var distance = _spawnPosition.z;
 
@@ -41,12 +48,18 @@ namespace Game
 
         private void StartGeneration()
         {
+            _generate = true;
             StartCoroutine(AsteroidGenerator());
+        }
+        
+        private void StopGeneration()
+        {
+            _generate = false;
         }
 
         private IEnumerator AsteroidGenerator()
         {
-            while (true)
+            while (_generate)
             {
                 var time = 10f;
                 
@@ -54,7 +67,7 @@ namespace Game
                     time = timeBetweenAsteroids / _difficultyValue;
 
                 var ast = Instantiate(asteroid, GenerateSpawnPoint(), Quaternion.identity);
-                ast.SetSpeedMultiplier(0.001f * FindObjectOfType<LevelChecker>().GetLevel());
+                ast.SetSpeedMultiplier(0.001f * FindObjectOfType<LevelChecker>().GetCurrentLevel());
                 
                 yield return new WaitForSeconds(time);
             }
@@ -70,6 +83,14 @@ namespace Game
             var t = new Vector3(x, y, z);
 
             return t;
+        }
+
+        private static void DestroyAllAsteroids()
+        {
+            foreach (var ast in FindObjectsOfType<Asteroid>())
+            {
+                Destroy(ast.gameObject);
+            }
         }
 
         public void DifficultyValue(float d)

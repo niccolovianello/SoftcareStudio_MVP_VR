@@ -87,7 +87,10 @@ namespace Game
                 }
             }
             
-            FindObjectOfType<AsteroidCounter>().AddStatistics(1);
+            var asteroidCounter = FindObjectOfType<AsteroidCounter>();
+            asteroidCounter.AddStatistics(1);
+            asteroidCounter.IncreaseKilledAsteroids();
+            
             EventManager.OnShotExplosion();
             Destroy(gameObject);
             // VFX, SFX...
@@ -138,7 +141,10 @@ namespace Game
                 }
             }
 
-            FindObjectOfType<AsteroidCounter>().AddStatistics(0);
+            var asteroidCounter = FindObjectOfType<AsteroidCounter>();
+            asteroidCounter.AddStatistics(0);
+            asteroidCounter.IncreaseLostAsteroids();
+            
             EventManager.OnGroundExplosion();
             Destroy(gameObject);
         }
