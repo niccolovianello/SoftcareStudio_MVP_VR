@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d708a8f34cb4c4e86f581273807663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMinutes: 1
+  startMinutes: 15
   timer: {fileID: 1244980846}
 --- !u!224 &34920490
 RectTransform:
@@ -1517,7 +1517,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 132045628}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1859121878}
+        m_TargetAssemblyTypeName: Game.LeaderboardManager, Assembly-CSharp
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &132045628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5752,6 +5764,111 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c04be9f92ebf58b46b2204ac3aaa8785, type: 3}
+--- !u!1 &501213078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 501213080}
+  - component: {fileID: 501213079}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &501213079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501213078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1d73df274cc314187f8d692c65f01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Ambient
+    clip: {fileID: 8300000, guid: ee52ee472abad084cb442aec146eb173, type: 3}
+    volume: 0.5
+    loop: 1
+    source: {fileID: 0}
+  - name: Soundtrack
+    clip: {fileID: 8300000, guid: 6f247247bc69d5d4187a7e3f160c080e, type: 3}
+    volume: 0.3
+    loop: 1
+    source: {fileID: 0}
+  - name: GunAppear
+    clip: {fileID: 8300000, guid: 8ec146007a81c204f9a6fd072bccb15c, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: SuccessShot
+    clip: {fileID: 8300000, guid: 52e4865ad2579fd4592d2dbf2f335e62, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: MissedShot
+    clip: {fileID: 8300000, guid: 3a10ed3299293a3488b638a7307a9162, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: Laser
+    clip: {fileID: 8300000, guid: 972dff33ebbfc97489f4f2e322c24789, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: FallingMeteor
+    clip: {fileID: 8300000, guid: e8146b15e5d42a041b69c12dc40782df, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: Combo
+    clip: {fileID: 8300000, guid: 7efc056bdd0b5364587eccab1b85086e, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: LevelUp
+    clip: {fileID: 8300000, guid: 603c87d3996f1144e8991cf534cdb4da, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: LevelDown
+    clip: {fileID: 8300000, guid: 66b4029040a9e144ab584312306c1aa5, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: Timer
+    clip: {fileID: 8300000, guid: 36752ab4a47e7224a87b886c48102a46, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+  - name: StopGame
+    clip: {fileID: 8300000, guid: 69c9156dc04cf984fb7dadb2c7d1285d, type: 3}
+    volume: 0.75
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &501213080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501213078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1003309, y: 1.6563689, z: 2.3136466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &509588212
 GameObject:
   m_ObjectHideFlags: 0
@@ -20808,7 +20925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017638696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -21.59, z: -24.7}
+  m_LocalPosition: {x: 0, y: -11.26, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

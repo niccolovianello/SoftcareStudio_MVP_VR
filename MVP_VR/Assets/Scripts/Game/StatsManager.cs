@@ -1,3 +1,4 @@
+using Sound;
 using TMPro;
 using UnityEngine;
 using Utilities;
@@ -68,6 +69,7 @@ namespace Game
 
             if (_remainingCombos != 0)
             {
+                FindObjectOfType<AudioManager>().PlaySound("Combo");
                 comboText.text = _remainingCombos.ToString();
                 return;
             }

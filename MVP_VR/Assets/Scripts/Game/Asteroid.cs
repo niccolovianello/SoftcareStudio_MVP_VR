@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Art.UI;
+using Sound;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -30,7 +31,6 @@ namespace Game
         private void FixedUpdate()
         {
             _interpolator += Time.deltaTime;
-            
             transform.position = MathUtils.Parabola(_startPos.position, _target.transform.position, _widthFactor, _interpolator * _speedMultiplier);
         }
 
@@ -93,7 +93,8 @@ namespace Game
             
             EventManager.OnShotExplosion();
             Destroy(gameObject);
-            // VFX, SFX...
+            
+            FindObjectOfType<AudioManager>().PlaySound("SuccessShot");
         }
 
         private void TerrainCollision()

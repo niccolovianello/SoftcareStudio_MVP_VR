@@ -1,3 +1,4 @@
+using Sound;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,9 +37,12 @@ namespace Game
             if (!manaManager.CanShoot()) return;
             
             manaManager.DecreaseShots();
+            
             var bul = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
             bul.SetBullet(bulletSo);
             bul.Shoot(bulletSo.force);
+            
+            FindObjectOfType<AudioManager>().PlaySound("Laser");
         }
     }
 }

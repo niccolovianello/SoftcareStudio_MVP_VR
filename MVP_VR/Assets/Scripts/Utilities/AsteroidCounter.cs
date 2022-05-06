@@ -26,6 +26,7 @@ namespace Utilities
 
         public void AddStatistics(int i)
         {
+            /*
             if (i == 0)
             {
                 _missedShots++;
@@ -35,6 +36,7 @@ namespace Utilities
                     EventManager.OnLevelDown();
                 }
             }
+            */
             
             _previousShotsList.RemoveAt(0);
 

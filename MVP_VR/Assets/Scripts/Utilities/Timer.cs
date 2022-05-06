@@ -1,4 +1,5 @@
 using System;
+using Sound;
 using TMPro;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Utilities
         
         private float _currentTime;
 
-        private bool _timerActive;
+        private bool _timerActive, _timerSoundAlreadyPlayed;
         
         private void OnEnable()
         {
@@ -40,6 +41,12 @@ namespace Utilities
                 _timerActive = false;
                 Start();
                 EventManager.OnStopGame();
+            }
+
+            if (_currentTime <= 10f && !_timerSoundAlreadyPlayed)
+            {
+                FindObjectOfType<AudioManager>().PlaySound("Timer");
+                _timerSoundAlreadyPlayed = true;
             }
             
             _currentTime -= Time.deltaTime;

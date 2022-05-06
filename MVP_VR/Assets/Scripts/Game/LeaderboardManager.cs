@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utilities;
 using Utils;
 
@@ -35,6 +36,11 @@ namespace Game
             maxLevel.text = FindObjectOfType<LevelChecker>().GetMaxLevel().ToString();
             
             score.text = FindObjectOfType<ScoreUpdater>().GetScore().ToString();
+        }
+
+        public void LoadNextLevel()
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

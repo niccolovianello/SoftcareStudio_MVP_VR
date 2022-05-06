@@ -1,3 +1,4 @@
+using Sound;
 using UnityEngine;
 using Utilities;
 
@@ -6,6 +7,8 @@ namespace Game
     public class LevelChecker : MonoBehaviour
     {
         private int _successCounter, _missCounter, _level, _maxLevel;
+
+        private AudioManager _audioManager;
 
         private void OnEnable()
         {
@@ -26,6 +29,8 @@ namespace Game
 
         private void Start()
         {
+            _audioManager = FindObjectOfType<AudioManager>();
+            
             _level = 1;
             _maxLevel = _level;
             FindObjectOfType<StatsManager>().UpdateLevel(_level);
@@ -63,9 +68,7 @@ namespace Game
             FindObjectOfType<StatsManager>().UpdateMissCounter(true);
 
             if (!IsLevelDown()) return;
-            
-            if (_level <= 1) return;
-            
+
             EventManager.OnLevelDown();
         }
 
@@ -77,13 +80,19 @@ namespace Game
             
             FindObjectOfType<StatsManager>().UpdateLevel(_level);
             
+            _audioManager.PlaySound("LevelUp");
+            
             ResetMissCounter();
         }
 
         private void DecreaseLevel()
         {
-            if(_level > 1) _level--;
-            FindObjectOfType<StatsManager>().UpdateLevel(_level);
+            if (_level > 1)
+            {
+                _level--;
+                FindObjectOfType<StatsManager>().UpdateLevel(_level);
+                _audioManager.PlaySound("LevelDown");
+            }
             
             ResetMissCounter();
         }

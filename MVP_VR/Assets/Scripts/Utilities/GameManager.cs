@@ -1,5 +1,6 @@
 using Art.UI;
 using Game;
+using Sound;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -13,21 +14,26 @@ namespace Utilities
         
         private Shooter _gunRight, _gunLeft;
 
+        private AudioManager _audioManager;
+
         private void OnEnable()
         {
             EventManager.StopGame += EnableLeaderboard;
             EventManager.StopGame += DisableGun;
-
+            EventManager.StopGame += PlayFinalSound;
         }
 
         private void OnDisable()
         {
             EventManager.StopGame -= EnableLeaderboard;
             EventManager.StopGame -= DisableGun;
+            EventManager.StopGame -= PlayFinalSound;
         }
 
         private void Start()
         {
+            _audioManager = FindObjectOfType<AudioManager>();
+            
             _gunRight = rightController.GetComponentInChildren<Shooter>();
             _gunLeft = leftController.GetComponentInChildren<Shooter>();
             
@@ -43,6 +49,12 @@ namespace Utilities
         private void EnableLeaderboard()
         {
             leaderboard.gameObject.SetActive(true);
+        }
+
+        private void PlayFinalSound()
+        {
+            _audioManager.StopSound("Soundtrack");
+            _audioManager.PlaySound("StopGame");
         }
 
         public void ChangeController()
@@ -72,6 +84,7 @@ namespace Utilities
             else _gunLeft.gameObject.SetActive(true);
             
             HapticController.SendHaptics(controller, .75f, .75f);
+            _audioManager.PlaySound("GunAppear");
             
             EventManager.OnStartGame();
         }
