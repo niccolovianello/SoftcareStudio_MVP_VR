@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game;
@@ -65,6 +66,12 @@ namespace Utilities
         {
             return _killedAsteroids;
         }
-        
+
+        public float GetPercentage()
+        {
+            var percentage = (float)_killedAsteroids / (_killedAsteroids + _lostAsteroids);
+            return (float)Math.Round(percentage * 100, 1);
+        }
+
     }
 }

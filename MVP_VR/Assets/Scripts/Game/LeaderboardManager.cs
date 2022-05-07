@@ -28,7 +28,8 @@ namespace Game
         private void ReadValues()
         {
             var asteroidCounter = FindObjectOfType<AsteroidCounter>();
-            killedAsteroids.text = asteroidCounter.GetKilledAsteroids().ToString();
+            
+            killedAsteroids.text = asteroidCounter.GetKilledAsteroids() + " (" + asteroidCounter.GetPercentage() + "%)";
             lostAsteroids.text = asteroidCounter.GetLostAsteroids().ToString();
 
             combos.text = FindObjectOfType<StatsManager>().GetTotalCombos().ToString();
