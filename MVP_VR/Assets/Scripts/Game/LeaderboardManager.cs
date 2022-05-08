@@ -1,6 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Utilities;
 using Utils;
 
@@ -8,10 +9,31 @@ namespace Game
 {
     public class LeaderboardManager : MonoBehaviour
     {
-        [SerializeField] private TMP_Text killedAsteroids, lostAsteroids, combos, maxLevel, score;
+        [SerializeField] private TMP_Text killedAsteroids, lostAsteroids, combos, maxLevel, score, finalText;
+
+        [SerializeField] private Button nextLevelBtn;
+
+        private void OnEnable()
+        {
+            EventManager.StartGame += DisableLeaderboard;
+        }
+        
+        private void OnDisable()
+        {
+            EventManager.StartGame -= DisableLeaderboard;
+        }
 
         private void Start()
         {
+            var sessionManager = FindObjectOfType<SessionManager>();
+            if (sessionManager.CurrentSessionIndex == sessionManager.SessionList.sessions.Count)
+            {
+                DisableNextLevelButton();
+                finalText.text = "Ottimo lavoro! Hai protetto egregiamente l'area dalla pioggia di meteoriti!";
+            }
+
+            finalText.text = "Riuscirai a migliorare la performance nella prossima sessione? Colpisci il bottone sottostante per iniziare!";
+            
             ReadValues();
             ShowLeaderboard();
         }
@@ -41,7 +63,17 @@ namespace Game
 
         public void LoadNextLevel()
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            FindObjectOfType<SessionManager>().NextSession();
+        }
+
+        private void DisableNextLevelButton()
+        {
+            nextLevelBtn.gameObject.SetActive(false);
+        }
+
+        private void DisableLeaderboard()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

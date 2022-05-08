@@ -6,7 +6,9 @@ namespace Sound
 {
     public class AudioManager : MonoBehaviour
     {
-        [SerializeField] private Sound[] sounds;
+        [SerializeField] private Sound[] environmentSounds;
+
+        public Sound soundtrack;
 
         private void OnEnable()
         {
@@ -20,7 +22,7 @@ namespace Sound
         
         private void Awake()
         {
-            foreach (var s in sounds)
+            foreach (var s in environmentSounds)
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
@@ -35,15 +37,28 @@ namespace Sound
             PlaySound("Ambient");
         }
 
-        // Only looping sounds start at the beginning (soundrack and environment SFX)
+        public void SetSoundtrack(Sound s)
+        {
+            soundtrack.source = gameObject.AddComponent<AudioSource>();
+            soundtrack.source.clip = s.clip;
+
+            soundtrack.source.volume = s.volume;
+            soundtrack.source.loop = s.loop;
+        }
+        
         private void PlaySoundtrack()
         {
-            PlaySound("Soundtrack");
+            soundtrack.source.Play();
+        }
+        
+        public void StopSoundtrack()
+        {
+            soundtrack.source.Stop();
         }
 
         public void PlaySound(string trackName)
         {
-            var s = Array.Find(sounds, sound => sound.name == trackName);
+            var s = Array.Find(environmentSounds, sound => sound.name == trackName);
             if (s == null)
             {
                 Debug.LogWarning("Sound named '" + trackName + "' not found!" );
@@ -54,7 +69,7 @@ namespace Sound
 
         public void StopSound(string trackName)
         {
-            var s = Array.Find(sounds, sound => sound.name == trackName);
+            var s = Array.Find(environmentSounds, sound => sound.name == trackName);
             if (s == null)
             {
                 Debug.LogWarning("Sound named '" + trackName + "' not found!" );

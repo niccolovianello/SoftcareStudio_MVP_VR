@@ -7,7 +7,7 @@ namespace Utilities
 {
     public class Timer : MonoBehaviour
     {
-        [SerializeField] private float startMinutes;
+        [SerializeField] private int startMinutes;
 
         [SerializeField] private TMP_Text timer;
         
@@ -53,6 +53,11 @@ namespace Utilities
             var time = TimeSpan.FromSeconds(_currentTime);
             
             if (timer) timer.text = $"{time.Minutes,0:D2}" + ":" + $"{time.Seconds,0:D2}";
+        }
+
+        public void SetTimer(int minutes)
+        {
+            startMinutes = minutes;
         }
 
         private void StartTimer()

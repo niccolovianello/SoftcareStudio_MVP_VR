@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5189a7a32c7ba478e923e461107256, type: 3}
+  m_Name: Session 3
+  m_EditorClassIdentifier: 
+  duration: 1
+  soundtrack:
+    name: Cyberpunk
+    clip: {fileID: 8300000, guid: 743ec1f8e08df4044b6a18dccaa5ec01, type: 3}
+    volume: 0.3
+    loop: 1
+    source: {fileID: 0}
+  sceneName: MVP_Level_3
+  lightingDataAsset: {fileID: 112000000, guid: 3faa415e4ac78f0429a500228b7ee939, type: 2}
+  skybox: {fileID: 2100000, guid: aec296dd793d95d47b6d8b7ded48d453, type: 2}
+  fog: 1
+  fogDensity: 0.007
+  fogColor: {r: 0.40784314, g: 0.52156866, b: 0.5294118, a: 1}

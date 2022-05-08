@@ -53,7 +53,7 @@ namespace Utilities
 
         private void PlayFinalSound()
         {
-            _audioManager.StopSound("Soundtrack");
+            _audioManager.StopSoundtrack();
             _audioManager.PlaySound("StopGame");
         }
 

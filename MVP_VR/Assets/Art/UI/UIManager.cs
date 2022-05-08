@@ -78,10 +78,11 @@ namespace Art.UI
 
         private void LetTheGamesBegin()
         {
+            
+            
             StartCoroutine(UIUtils.SwitchUISection(null, gameStats));
 
             var controller = FindObjectOfType<ActionBasedController>();
-            
             FindObjectOfType<GameManager>().StartTheGame(controller);
         }
 
