@@ -23,6 +23,7 @@ namespace Game
             EventManager.StartGame += StartGeneration;
             EventManager.StopGame += StopGeneration;
             EventManager.StopGame += DestroyAllAsteroids;
+            EventManager.LoadSession += ResetDifficultyValue;
         }
         
         private void OnDisable()
@@ -30,6 +31,7 @@ namespace Game
             EventManager.StartGame -= StartGeneration;
             EventManager.StopGame -= StopGeneration;
             EventManager.StopGame -= DestroyAllAsteroids;
+            EventManager.LoadSession -= ResetDifficultyValue;
         }
 
         private void Start()
@@ -96,6 +98,11 @@ namespace Game
         public void DifficultyValue(float d)
         {
             _difficultyValue = d / 2;
+        }
+
+        private void ResetDifficultyValue()
+        {
+            _difficultyValue = 0;
         }
     }
 }

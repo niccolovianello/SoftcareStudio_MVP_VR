@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,26 +15,24 @@ namespace Game
         private void OnEnable()
         {
             EventManager.StartGame += DisableLeaderboard;
-        }
-        
-        private void OnDisable()
-        {
-            EventManager.StartGame -= DisableLeaderboard;
-        }
-
-        private void Start()
-        {
+            
             var sessionManager = FindObjectOfType<SessionManager>();
-            if (sessionManager.CurrentSessionIndex == sessionManager.SessionList.sessions.Count)
+            
+            finalText.text = "Riuscirai a migliorare la performance nella prossima sessione? Colpisci il bottone sottostante per iniziare!";
+            
+            if (sessionManager.CurrentSessionIndex == sessionManager.SessionList.sessions.Count - 1)
             {
                 DisableNextLevelButton();
                 finalText.text = "Ottimo lavoro! Hai protetto egregiamente l'area dalla pioggia di meteoriti!";
             }
 
-            finalText.text = "Riuscirai a migliorare la performance nella prossima sessione? Colpisci il bottone sottostante per iniziare!";
-            
-            ReadValues();
             ShowLeaderboard();
+            ReadValues();
+        }
+        
+        private void OnDisable()
+        {
+            EventManager.StartGame -= DisableLeaderboard;
         }
 
         private void ShowLeaderboard()

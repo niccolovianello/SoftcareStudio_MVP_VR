@@ -14,6 +14,7 @@ namespace Game
         private float _currentTime;
 
         private float _availableShots;
+        
 
         private void Start()
         {

@@ -18,12 +18,14 @@ namespace Game
         {
             EventManager.SuperCombo += NewCombo;
             EventManager.LevelDown += DecreaseNeededCombos;
+            EventManager.LoadSession += InitStats;
         }
         
         private void OnDisable()
         {
             EventManager.SuperCombo -= NewCombo;
             EventManager.LevelDown -= DecreaseNeededCombos;
+            EventManager.LoadSession -= InitStats;
         }
 
         private void Start()
@@ -33,6 +35,8 @@ namespace Game
 
             _remainingCombos = _combo;
             comboText.text = _remainingCombos.ToString();
+            UpdateComboLoader(false);
+            UpdateMissCounter(false);
         }
 
         public void UpdateLevel(int level)
@@ -86,6 +90,11 @@ namespace Game
             _combo--;
             _remainingCombos = _combo;
             comboText.text = _remainingCombos.ToString();
+        }
+
+        private void InitStats()
+        {
+            Start();
         }
     }
 }

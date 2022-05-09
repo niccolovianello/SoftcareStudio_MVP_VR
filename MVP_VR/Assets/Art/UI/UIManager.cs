@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -12,6 +13,8 @@ namespace Art.UI
         [SerializeField] private CanvasGroup background, startingMenu, mainMenu, optionsMenu, helpUI, gameStats;
 
         [SerializeField] private Image leftControllerSprite, rightControllerSprite;
+
+        [SerializeField] private TMP_Text[] textsToDisable;
 
         private void OnEnable()
         {
@@ -65,6 +68,27 @@ namespace Art.UI
             LetTheGamesBegin();
         }
 
+        public void InitUi(int currentSessionIndex)
+        {
+
+            if (currentSessionIndex == 0)
+            {
+                StartCoroutine(UIUtils.SwitchUISection(null, background));
+                StartCoroutine(UIUtils.SwitchUISection(null, startingMenu));
+            }
+
+            else
+            {
+                StartCoroutine(UIUtils.SwitchUISection(null, background));
+                StartCoroutine(UIUtils.SwitchUISection(null, helpUI));
+
+                foreach (var text in textsToDisable)
+                {
+                    text.gameObject.SetActive(false);
+                }
+            }
+        }
+
         private void CloseStartingMenu()
         {
             StartCoroutine(UIUtils.SwitchUISection(startingMenu, helpUI));
@@ -78,8 +102,6 @@ namespace Art.UI
 
         private void LetTheGamesBegin()
         {
-            
-            
             StartCoroutine(UIUtils.SwitchUISection(null, gameStats));
 
             var controller = FindObjectOfType<ActionBasedController>();
@@ -91,6 +113,7 @@ namespace Art.UI
             gameStats.gameObject.SetActive(false);
         }
 
+        
         
 
     }

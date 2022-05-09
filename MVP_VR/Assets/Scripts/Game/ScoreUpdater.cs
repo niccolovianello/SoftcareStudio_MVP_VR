@@ -12,11 +12,13 @@ namespace Game
         private void OnEnable()
         {
             EventManager.ShotExplosion += IncreaseScore;
+            EventManager.LoadSession += InitScore;
         }
         
         private void OnDisable()
         {
             EventManager.ShotExplosion -= IncreaseScore;
+            EventManager.LoadSession -= InitScore;
         }
 
         private void Start()
@@ -37,6 +39,11 @@ namespace Game
         public int GetScore()
         {
             return _score;
+        }
+
+        private void InitScore()
+        {
+            Start();
         }
 
     }

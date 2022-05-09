@@ -15,6 +15,10 @@ namespace Utilities
         public static event StartStopGame StartGame;
         
         public static event StartStopGame StopGame;
+
+        public delegate void NewSession();
+
+        public static event NewSession LoadSession;
         
         public delegate void Combo();
 
@@ -40,10 +44,15 @@ namespace Utilities
         {
             StartGame?.Invoke();
         }
-        
+
         public static void OnStopGame()
         {
             StopGame?.Invoke();
+        }
+
+        public static void OnLoadSession()
+        {
+            LoadSession?.Invoke();
         }
 
         public static void OnCombo()

@@ -985,6 +985,9 @@ MonoBehaviour:
   gameStats: {fileID: 1070190144}
   leftControllerSprite: {fileID: 132854790}
   rightControllerSprite: {fileID: 583832532}
+  textsToDisable:
+  - {fileID: 1504288361}
+  - {fileID: 2095277244}
 --- !u!114 &95099726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,7 +1157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112198980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1003309, y: 1.6563689, z: 2.3136466}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4186,7 +4189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723691034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7965001, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

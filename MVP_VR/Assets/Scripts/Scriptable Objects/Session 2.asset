@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5189a7a32c7ba478e923e461107256, type: 3}
   m_Name: Session 2
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 15
   soundtrack:
     name: Arcade
     clip: {fileID: 8300000, guid: 28a174e2c9759e84e85e4e5972919ca5, type: 3}
@@ -20,7 +20,6 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   sceneName: MVP_Level_2
-  lightingDataAsset: {fileID: 112000000, guid: fbee8e02fd4b08a4ab3d4ac955bec2f8, type: 2}
   skybox: {fileID: 2100000, guid: 69ea639505d93df4481697c14bc445d6, type: 2}
   fog: 1
   fogDensity: 0.005

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5189a7a32c7ba478e923e461107256, type: 3}
   m_Name: Session 5
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 15
   soundtrack:
     name: Spy
     clip: {fileID: 8300000, guid: cecbd1c12bf07754295203f954e791fb, type: 3}
@@ -20,7 +20,6 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   sceneName: MVP_Level_5
-  lightingDataAsset: {fileID: 112000000, guid: 7d1a6655c208a3a47ba3aebe30ceae74, type: 2}
   skybox: {fileID: 2100000, guid: 7177912a0a60bc447b41179ace215339, type: 2}
   fog: 1
   fogDensity: 0.007

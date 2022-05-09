@@ -16,7 +16,7 @@ namespace Game
             EventManager.LevelDown += DecreaseLevel;
             EventManager.ShotExplosion += IncreaseSuccessCounter;
             EventManager.GroundExplosion += IncreaseMissCounter;
-            
+            EventManager.LoadSession += InitLevel;
         }
         
         private void OnDisable()
@@ -25,6 +25,7 @@ namespace Game
             EventManager.LevelDown -= DecreaseLevel;
             EventManager.ShotExplosion -= IncreaseSuccessCounter;
             EventManager.GroundExplosion -= IncreaseMissCounter;
+            EventManager.LoadSession -= InitLevel;
         }
 
         private void Start()
@@ -119,6 +120,11 @@ namespace Game
         {
             var isLevelDown = _missCounter == 10;
             return isLevelDown;
+        }
+
+        private void InitLevel()
+        {
+            Start();
         }
     }
 }

@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 namespace Scriptable_Objects
@@ -12,7 +11,7 @@ namespace Scriptable_Objects
 
         public string sceneName;
 
-        public LightingDataAsset lightingDataAsset;
+        //public LightingDataAsset lightingDataAsset;
 
         public Material skybox;
 

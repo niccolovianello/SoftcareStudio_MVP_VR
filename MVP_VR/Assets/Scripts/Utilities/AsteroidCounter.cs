@@ -16,6 +16,16 @@ namespace Utilities
         
         private List<int> _previousShotsList;
 
+        private void OnEnable()
+        {
+            EventManager.LoadSession += InitCounter;
+        }
+        
+        private void OnDisable()
+        {
+            EventManager.LoadSession -= InitCounter;
+        }
+
         private void Start()
         {
             _previousShots = new int[shotsToIncludeInPrediction];
@@ -27,18 +37,6 @@ namespace Utilities
 
         public void AddStatistics(int i)
         {
-            /*
-            if (i == 0)
-            {
-                _missedShots++;
-                if (_missedShots == 10)
-                {
-                    _missedShots = 0;
-                    EventManager.OnLevelDown();
-                }
-            }
-            */
-            
             _previousShotsList.RemoveAt(0);
 
             _previousShotsList.Add(i);
@@ -71,6 +69,11 @@ namespace Utilities
         {
             var percentage = (float)_killedAsteroids / (_killedAsteroids + _lostAsteroids);
             return (float)Math.Round(percentage * 100, 1);
+        }
+
+        private void InitCounter()
+        {
+            Start();
         }
 
     }

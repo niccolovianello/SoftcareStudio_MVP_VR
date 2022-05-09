@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5189a7a32c7ba478e923e461107256, type: 3}
   m_Name: Session 4
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 15
   soundtrack:
     name: Percussion
     clip: {fileID: 8300000, guid: cfc089161eeded04c9f7f96cabffcc33, type: 3}
@@ -20,7 +20,6 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   sceneName: MVP_Level_4
-  lightingDataAsset: {fileID: 112000000, guid: c8243886447649d42972820547fabd1a, type: 2}
   skybox: {fileID: 2100000, guid: 0315525eb4a2b6849b8ae1184e3a685c, type: 2}
   fog: 1
   fogDensity: 0.003
