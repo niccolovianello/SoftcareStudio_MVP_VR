@@ -35,6 +35,7 @@ namespace Game
 
             _remainingCombos = _combo;
             comboText.text = _remainingCombos.ToString();
+            
             UpdateComboLoader(false);
             UpdateMissCounter(false);
         }
@@ -73,6 +74,7 @@ namespace Game
 
             if (_remainingCombos != 0)
             {
+                FindObjectOfType<LevelChecker>().ResetMissCounter();
                 FindObjectOfType<AudioManager>().PlaySound("Combo");
                 comboText.text = _remainingCombos.ToString();
                 return;

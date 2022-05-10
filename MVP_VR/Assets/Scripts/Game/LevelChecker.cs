@@ -104,7 +104,7 @@ namespace Game
             FindObjectOfType<StatsManager>().UpdateComboLoader(false);
         }
         
-        private void ResetMissCounter()
+        public void ResetMissCounter()
         {
             _missCounter = 0;
             FindObjectOfType<StatsManager>().UpdateMissCounter(false);

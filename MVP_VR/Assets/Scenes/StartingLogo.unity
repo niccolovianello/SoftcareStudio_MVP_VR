@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logoCanvas: {fileID: 1934972613}
-  logoDuration: 2
+  logoDuration: 3
 --- !u!1 &141540866
 GameObject:
   m_ObjectHideFlags: 0
