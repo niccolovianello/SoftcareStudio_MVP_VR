@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 15
   soundtrack:
-    name: Percussion
-    clip: {fileID: 8300000, guid: cfc089161eeded04c9f7f96cabffcc33, type: 3}
+    name: Dubstep Action
+    clip: {fileID: 8300000, guid: da047820dc7b4844798b6fc7ea4e31f7, type: 3}
     volume: 0.3
     loop: 1
     source: {fileID: 0}

@@ -2,6 +2,7 @@ using System;
 using Sound;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Utilities
 {
@@ -9,7 +10,9 @@ namespace Utilities
     {
         [SerializeField] private int startMinutes;
 
-        [SerializeField] private TMP_Text timer;
+        [SerializeField] private TMP_Text timerTextField;
+        
+        [SerializeField] private InputActionReference shootActionReference;
         
         private float _currentTime;
 
@@ -18,17 +21,24 @@ namespace Utilities
         private void OnEnable()
         {
             EventManager.StartGame += StartTimer;
+            shootActionReference.action.performed += OnResetTimer;
         }
         
         private void OnDisable()
         {
             EventManager.StartGame -= StartTimer;
+            shootActionReference.action.performed -= OnResetTimer;
+        }
+
+        private void OnResetTimer(InputAction.CallbackContext obj)
+        {
+            ResetTimer();
         }
 
         private void Start()
         {
             _currentTime = startMinutes * 60f;
-            timer.text = "--:--";
+            timerTextField.text = "--:--";
         }
 
         private void Update()
@@ -52,7 +62,7 @@ namespace Utilities
             _currentTime -= Time.deltaTime;
             var time = TimeSpan.FromSeconds(_currentTime);
             
-            if (timer) timer.text = $"{time.Minutes,0:D2}" + ":" + $"{time.Seconds,0:D2}";
+            if (timerTextField) timerTextField.text = $"{time.Minutes,0:D2}" + ":" + $"{time.Seconds,0:D2}";
         }
 
         public void SetTimer(int minutes)
@@ -65,10 +75,10 @@ namespace Utilities
             _timerActive = true;
         }
 
-        private void StopTimer()
+        private void ResetTimer()
         {
-            _timerActive = false;
+            _currentTime = 0;
         }
-        
+
     }
 }

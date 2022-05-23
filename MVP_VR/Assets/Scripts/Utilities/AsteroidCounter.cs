@@ -67,7 +67,14 @@ namespace Utilities
 
         public float GetPercentage()
         {
-            var percentage = (float)_killedAsteroids / (_killedAsteroids + _lostAsteroids);
+            float percentage;
+            
+            if (_killedAsteroids + _lostAsteroids == 0)
+            {
+                percentage = 0;
+            }
+            else percentage = (float)_killedAsteroids / (_killedAsteroids + _lostAsteroids);
+            
             return (float)Math.Round(percentage * 100, 1);
         }
 

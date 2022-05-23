@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 15
   soundtrack:
-    name: Arcade
-    clip: {fileID: 8300000, guid: 28a174e2c9759e84e85e4e5972919ca5, type: 3}
+    name: Action Sport Game
+    clip: {fileID: 8300000, guid: be09c9fb6cadbbb4e82b8f855b4e9177, type: 3}
     volume: 0.3
     loop: 1
     source: {fileID: 0}

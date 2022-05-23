@@ -10,6 +10,9 @@ namespace Utilities
 
         [Range(1f, 10f)]
         [SerializeField] private float logoDuration;
+        
+        [Range(0f, 2f)]
+        [SerializeField] private float timeBeforeLogoAppears;
 
         private void Start()
         {
@@ -18,6 +21,8 @@ namespace Utilities
 
         private IEnumerator FadeLogo()
         {
+            yield return new WaitForSeconds(timeBeforeLogoAppears);
+            
             while (logoCanvas.alpha < 1f)
             {
                 logoCanvas.alpha += 0.01f;

@@ -68,6 +68,8 @@ namespace Game
                 if (_difficultyValue != 0)
                     time = timeBetweenAsteroids / _difficultyValue;
 
+                if (time > 10f) time = 10;
+
                 var ast = Instantiate(asteroid, GenerateSpawnPoint(), Quaternion.identity);
                 ast.SetSpeedMultiplier(0.001f * FindObjectOfType<LevelChecker>().GetCurrentLevel());
                 
